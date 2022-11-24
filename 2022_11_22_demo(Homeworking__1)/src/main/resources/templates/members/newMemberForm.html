@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p></p><h2>회원 가입</h2></p>
+    <p><h4>회원정보 입력</h4></p>
+
+    <form action="" th:action th:object="${form}" method="post"> <!--dto안에 loginId랑 username이랑 paswsword를 갖고 formd이란 이름으로 변수를 가져와야 함 그리고 dto안의 필드-->
+        <label for="loginId">로그인 아이디</label> <!--이 로그인 아이디를 실제로 필드에 넣을거라고 함 -->
+        <input type="text" id="loginId" th:field="*{loginId}"/> <!--th:field="*{loginId}를 들고 필드로 간다고 함-->
+
+        <hr>
+
+
+        <label for="memberName">회원 이름</label> <!--이 로그인 아이디를 실제로 필드에 넣을거라고 함 -->
+        <input type="text" id="memberName" th:field="*{memberName}"/> <!--th:field="*{memberName}를 들고 필드로 간다고 함-->
+
+        <hr>
+
+        <label for="password">비밀번호</label> <!--이 로그인 아이디를 실제로 필드에 넣을거라고 함 -->
+        <input type="text" id="password" th:field="*{password}"/> <!--th:field="*{password}를 들고 필드로 간다고 함// 필드와 이름을 같게 맞춰야함-->
+
+        <hr>
+
+
+        <label for="academyName">학원 이름</label> <!--이 로그인 아이디를 실제로 필드에 넣을거라고 함 -->
+        <input type="text" id="academyName" th:field="*{academyName}"/>
+
+        <button type="submit">가입</button>
+
+    </form>
+
+    <button type="button" th:onclick="|location.href='@{/}'|">취소</button>
+
+</body>
+</html>

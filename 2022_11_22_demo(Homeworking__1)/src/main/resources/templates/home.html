@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  welcome to index!!
+
+  <button type="button" th:onclick="|location.href='@{/members/new}'|">회원 가입</button> <!--members/new로 넘어가게 해야함-->
+  <button type="button" th:onclick="|location.href='@{/login}'|">로그인</button> <!--로그인을 안 만들어두면 화이트라벨 페이지 뜸-->
+</body>
+</html>
