@@ -9,17 +9,25 @@
     <p><h4>회원정보 입력</h4></p>
 
     <form action="" th:action th:object="${form}" method="post">
-        <p><label for="loginId">로그인 ID</label>
-        <input type="text" id="loginId" th:field="*{loginId}"/></p>
+        <div>
+            <label for="loginId">로그인 ID</label>
+            <input type="text" id="loginId" th:field="*{loginId}"/>
+        </div>
 
-        <p><label for="memberName">이름</label>
-        <input type="text" id="memberName" th:field="*{memberName}"/></p>
+        <div>
+            <label for="memberName">이름</label>
+            <input type="text" id="memberName" th:field="*{memberName}"/>
+        </div>
 
-        <p><label for="password">비밀번호</label>
-            <input type="password" id="password" th:field="*{password}"/></p>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" th:field="*{password}"/>
+        </div>
 
-        <p><label for="academyName">학원 이름</label>
-            <input type="text" id="academyName" th:field="*{academyName}"/></p>
+        <div>
+            <label for="academyName">학원 이름</label>
+            <input type="text" id="academyName" th:field="*{academyName}" placeholder="학원이름"/></p>
+        </div>
 
         <button type="submit">가입</button>
         <button type="button" th:onclick="|location.href='@{/}'|">취소</button>

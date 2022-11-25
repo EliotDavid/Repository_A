@@ -20,4 +20,9 @@ public class MemberService {
     public void insert(Member member) {
         memberRepository.save(member);
     }
+
+
+    public List<Member> findByName(String loginId) {
+        return memberRepository.findByLoginId(loginId);
+    }
 }
