@@ -1,0 +1,97 @@
+package com.example.demo.relation.view.member;
+
+import com.example.demo.relation.domain.academy.Academy;
+import com.example.demo.relation.domain.academy.AcademyRepository;
+import com.example.demo.relation.domain.member.Member;
+import com.example.demo.relation.domain.service.MemberService;
+import com.example.demo.relation.view.member.dto.MemberDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.persistence.EntityManager;
+import javax.validation.Valid;
+import java.util.List;
+
+@RequestMapping("/members")
+@RequiredArgsConstructor
+@Controller
+public class RelationController {
+
+
+    private final MemberService memberService;
+    private final AcademyRepository academyRepository;
+
+    @GetMapping("/new")
+    public String insert(@ModelAttribute("form") MemberDto dto) { // BindingReusult : 1번째 인자의 값을 blindingresult가 들고 있는데 어떻게 들고 있냠ㄴ @valid라는 애가 들어가있으니까 @valid는 notempty인지 아닌지 확인하는 애인데, 그 비어있는지 아닌지의 값을 blindingreuslt가 들고 있음
+        return "members/newMemberForm";
+    }
+
+    @PostMapping("/new") // ** 기존에 있던 기능들을 합쳐놓은 공간
+    public String save(@Valid @ModelAttribute("form") MemberDto dto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "member/newMemberForm";
+        }
+
+        List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
+
+
+        Academy academy = null;
+
+
+        if (!academies.isEmpty()) { // **학원명 이름
+            academy = academies.get(0);
+        } else {
+            academy = new Academy(dto.getAcademyName());
+        }
+
+        List<Member> members = memberService.findByName(dto.getLoginId()); // ** 아이디 중복체크
+        
+        if(!members.isEmpty()){
+            System.out.println("Error Message!!!!!");
+            return "members/newMemberForm";
+        } else {
+            memberService.insert(
+                    new Member(
+                            dto.getLoginId(),
+                            dto.getMemberName(),
+                            dto.getPassword(),
+                            academy));
+
+        }
+
+
+
+
+
+
+        /*
+        List<Academy> all = academyRepository.findAll();
+        if(all.isEmpty())
+        {
+            Academy academy = new Academy(dto.getAcademyName());
+            memberService.insert(
+                    new Member( dto.getMemberName(), academy));
+        }
+        else
+        {
+            for (Academy element : all) {
+                if(element.getAcademyName().equals(dto.getAcademyName())) {
+                    Academy academy = academyRepository.findById(element.getId());
+                    memberService.insert(
+                            new Member( dto.getMemberName(), academy));
+                }
+            }
+        }
+*/
+
+        return "redirect:/";
+    }
+
+
+
+    }
