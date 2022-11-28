@@ -15,6 +15,9 @@ public class MemberDto {
     private String password;
 
     @NotEmpty
+    private String passwordConfirm;
+
+    @NotEmpty
     private String memberName;
 
     @NotEmpty

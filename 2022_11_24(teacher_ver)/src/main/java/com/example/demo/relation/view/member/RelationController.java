@@ -89,7 +89,8 @@ public class RelationController {
         }
 */
 
-        return "redirect:/";
+        return "redirect:/"; // **만약에 이걸 완료했어? 그럼 다른 페이지로 넘어가 이러면 다른 페이지의 위치를 적어주면 됨
+                                // ** 그럼 뷰에서 그 페이지로 넘어감
     }
 
 
