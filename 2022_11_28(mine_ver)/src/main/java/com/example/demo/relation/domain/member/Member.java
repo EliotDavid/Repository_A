@@ -26,6 +26,9 @@ public class Member {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "userEmail")
+    private String userEmail;
+
     /*
     @JoinColumns(value = {@JoinColumn(name = "academy_id")},
             foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
@@ -34,10 +37,11 @@ public class Member {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Academy academy;
 
-    public Member(String loginId, String memberName, String password, Academy academy) {
+    public Member(String loginId, String memberName, String password, String userEmail, Academy academy) {
         this.loginId = loginId;
         this.memberName = memberName;
         this.password = password;
+        this.userEmail = userEmail;
         this.academy = academy;
     }
 }

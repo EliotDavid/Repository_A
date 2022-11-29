@@ -33,7 +33,8 @@ public class RelationController {
 
     @PostMapping("/new") // ** 기존에 있던 기능들을 합쳐놓은 공간
     public String save(@Valid @ModelAttribute("form") MemberDto dto, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors()){ // ** 얘가 에러가 생기면 다시 되돌리는 애임.
+                                        // ** 로그인 할 때 값이 비워져있는게 있어서 정상적인 처리과정이 아닐 때(하나라도 비워져있는 에러상황일때) DB로 안넘어가게(다음 페이지로 안 넘어가게도 해줌) 해주는 걸 얘가 해줌
             return "member/newMemberForm";
         }
 
@@ -60,6 +61,7 @@ public class RelationController {
                             dto.getLoginId(),
                             dto.getMemberName(),
                             dto.getPassword(),
+                            dto.getUserEmail(),
                             academy));
 
         }

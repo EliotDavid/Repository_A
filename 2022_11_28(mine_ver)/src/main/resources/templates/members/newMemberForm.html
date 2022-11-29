@@ -6,7 +6,15 @@
 
     <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
 
-
+    <style>
+        .container {
+            max-width: 500px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color : #dc3545;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,6 +23,11 @@
 
     <form action="" th:action th:object="${form}" method="post"><!--class가 form태그에도 들어갈 수 있고 div태그를 묶는 div 태그에도 들어갈 수 있다고함-->
 
+        <div th:if="${#fields.hasGlobalErrors()}"> <!--th:if 뜻 : 조건문처럼 사용함 / 해당 조건이 만족할 때만 보여준다-->
+            <p class="field-error" th:each="${#fields.hasGlobalErrors()}" th:text="${err}">전체 오류 메세지</p>
+        </div>
+
+
         <div class="member">
                 <!--로고-->
                 <img class="logo" src="/images/Qatar2022.jpg"><!--class가 들어가면 무조건 css와 연결되어 있다고 생각하라고함-->
@@ -22,28 +35,38 @@
             <div class="field">
                 <label for="loginId">로그인 ID</label>
                 <input type="text" id="loginId" th:field="*{loginId}"/>
+                <div class="field-error" th:errors="*{loginId}"/>
             </div>
 
             <div class="field">
                 <label for="memberName">이름</label>
                 <input type="text" id="memberName" th:field="*{memberName}"/>
+                <div class="field-error" th:errors="*{memberName}"/>
             </div>
 
+            <div class="field">
+                <label for="userEmail">이메일</label>
+                <input class="placehold-text" type="email" id="userEmail" th:field="*{userEmail}"/>
+                <div class="field-error" th:errors="*{userEmail}"/>
+            </div>
 
             <div class="field">
                 <label for="password">비밀번호</label>
                 <input class="password" type="password" id="password" th:field="*{password}"/>
+                <div class="field-error" th:errors="*{password}"/>
             </div>
 
             <div class="field">
                 <label for="passwordConfirm">비밀번호번호 확인</label>
                 <input class="password-Confirm" type="password" id="passwordConfirm" th:field="*{passwordConfirm}"/>
+                <div class="field-error" th:errors="*{passwordConfirm}"/>
             </div>
 
 
             <div class="field">
                 <label for="academyName">학원 이름</label>
                 <input type="text" id="academyName" th:field="*{academyName}" placeholder="학원이름"/></p>
+                <div class="field-error" th:errors="*{academyName}"/>
             </div>
 
             <input type="submit" value="가입"/>
