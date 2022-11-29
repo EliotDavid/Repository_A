@@ -101,7 +101,7 @@ a{
     background-color: #fff;
 }
 
-.passwordConfirm{
+.password-Confirm{
     /*background:url(./images/icon-02.png) no-repeat center right 15px;*/
     background:url(/images/lock.svg) no-repeat center right 15px;
     background-size: 20px;
