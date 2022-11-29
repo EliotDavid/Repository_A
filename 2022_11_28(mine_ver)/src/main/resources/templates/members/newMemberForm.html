@@ -46,7 +46,7 @@
 
             <div class="field">
                 <label for="userEmail">이메일</label>
-                <input class="placehold-text" type="email" id="userEmail" th:field="*{userEmail}"/>
+                <input class="placehold-text:before" type="email" id="userEmail" th:field="*{userEmail}"/>
                 <div class="field-error" th:errors="*{userEmail}"/>
             </div>
 
