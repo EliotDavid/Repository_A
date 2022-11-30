@@ -1,5 +1,6 @@
 package com.example.demo.relation.domain.login;
 
+import com.example.demo.relation.domain.member.Member;
 import com.example.demo.relation.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -9,15 +10,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
-    public String login(String loginId){
-        //Member member = memberRepository.findByLoginId(loginId);
+    public String login(String loginId)
+    {
+        Member member = memberRepository.findByLoginId(loginId);
 
-        //if(member == null){
+        if(member == null)
             return "login/loginForm";
-        } else {
-            return
-        }
+        else
+            return "redirect:/";
+    }
     }
 }

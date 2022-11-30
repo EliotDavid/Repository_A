@@ -36,6 +36,6 @@ public class LoginController {
 
     @PostMapping("/login")
     public String save(@Valid @ModelAttribute("form") LoginDto dto, BindingResult bindingResult) {
-        return "login/loginForm";
+        return loginService.login(dto.getLoginId());
     }
 }

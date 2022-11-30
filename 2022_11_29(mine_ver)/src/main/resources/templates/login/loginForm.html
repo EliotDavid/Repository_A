@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>로그인 페이지</title>
+
+
+    <style>
+        .container {
+            max-width: 500px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color : #dc3545;
+        }
+    </style>
 </head>
 <body>
-    login
+
+    <h1>로그인 홈페이지!</h1>
+
+    <form action="" th:action th:object="${form}" method="post">
+        <div th:if="${#fields.hasGlobalErrors()}"> <!--th:if 뜻 : 조건문처럼 사용함 / 해당 조건이 만족할 때만 보여준다-->
+            <p class="field-error" th:each="${#fields.hasGlobalErrors()}" th:text="${err}">전체 오류 메세지</p>
+        </div>
+
+        <div class="field">
+            <label for="loginId">로그인 ID</label>
+            <input type="text" id="loginId" th:field="*{loginId}" placeholder="아이디"/>
+            <div class="field-error" th:errors="*{loginId}"/>
+        </div>
+
+        <div class="field">
+            <label for="password">비밀번호</label>
+            <input class="password" type="password" id="password" th:field="*{password}" placeholder="비밀번호"/>
+            <div class="field-error" th:errors="*{password}"/>
+        </div>
+    </form>
+
 </body>
 </html>
