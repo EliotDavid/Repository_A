@@ -22,7 +22,7 @@ public class MemberService {
     }
 
 
-    public List<Member> findByName(String loginId) {
+    public Member findByLoginId(String loginId) {
         return memberRepository.findByLoginId(loginId);
     }
 }

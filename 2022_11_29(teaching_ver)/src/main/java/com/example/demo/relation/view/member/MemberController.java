@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/members")
 @RequiredArgsConstructor
 @Controller
-public class RelationController {
+public class MemberController {
     private final RelationService relationService;
     private final AcademyRepository academyRepository;
 
