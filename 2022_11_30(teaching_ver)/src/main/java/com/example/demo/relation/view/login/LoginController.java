@@ -37,11 +37,20 @@ public class LoginController {
 
 
 
-        List<Member> members = loginService.login(dto.getLoginId(), dto.getPassword());
+        List<Member> members = loginService.login(dto.getLoginId());//, dto.getPassword());
 
-        if(members.size() == 0){
+        if(members.size() == 0){ // ** 아이디를 검색했는데 member가 없으면이라는 뜻이라는데? // 0이면 아무것도 없으면 이라는 뜻이라는데?
+            bindingResult.reject("loginFail","해당 ID와 비밀번호는 존재하지 않습니다."); // ** 유효성을 거절해라는 뜻인가?
             return "login/loginForm";
-        }
+        } else {
+            for(Member member : members){
+                if(member.getPassword().equals(dto.getPassword())){
+                    return "login/join";
+            } else {
+
+                    return "login/loginForm";
+                }
+
         //System.out.println(members.size());
 
 

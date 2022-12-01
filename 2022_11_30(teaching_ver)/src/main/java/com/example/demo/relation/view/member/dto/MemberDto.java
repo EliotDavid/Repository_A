@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class MemberDto {
 
+    // ** NotEmpty : Notempty가 달린 상태에서 message가 쓰이면 비어있을 수 없음이란 메세지를 알린다
     @NotEmpty(message = "사용자 ID는 필수 항목 입니다.")
     private String loginId;
 

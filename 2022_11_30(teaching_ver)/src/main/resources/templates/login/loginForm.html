@@ -79,10 +79,16 @@
 </head>
 <body>
 
+
     <h1>로그인 페이지</h1>
 
 
     <form action="" th:action th:object="${form}" method="post">
+
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+               th:text="${err}">전체 오류 메시지></p>
+        </div>
 
         <div class="member">
             <img class="logo" src="/images/signup.png">
