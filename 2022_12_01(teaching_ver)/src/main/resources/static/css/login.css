@@ -1,0 +1,56 @@
+.member .field{
+        margin :5px 0;
+        }
+
+        .field.birth div{
+            display: flex;
+            gap:10px;
+        }
+
+        .field.tel-number div {
+            display: flex;
+        }
+
+        .field.tel-number div input:nth-child(1){
+            flex:2;
+        }
+
+        .field.tel-number div input:nth-child(2){
+            flex:1;
+        }
+
+        .field.gender div{
+            border: 1px solid #dadada;
+            padding: 15px 5px;
+            background-color: #fff;
+        }
+
+.member{
+    width: 400px;
+    margin: auto; /*중앙 정렬*/
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+        .member input:not(input[type=radio]),.member select{
+    border: 1px solid #dadada;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.member input[type=button],
+.member input[type=submit]{
+    background-color: #AD1818FF;
+    color:#fff
+}
+
+.member input:focus, .member select:focus{
+    border: 1px solid #AD1818FF;
+}
+
+@media (max-width:768px) {
+    .member{
+        width: 100%;
+    }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/css/sign_up.css}" href="../css/sign_up.css">
+
+    <style>
+        .container {
+            max-width: 500px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color : #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <form action="" th:action th:object="${form}" method="post">
+
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="${#fields.hasGlobalErrors()}" th:text="${err}">전체 오류 메세지</p>
+        </div>
+
+        <div class="member">
+            <!-- 로고 -->
+            <img class="logo" src="/images/sign_up.png">
+
+            <!-- 로그인 ID -->
+            <div class="field">
+                <label for="loginId">로그인 ID</label>
+                <input type="text" id="loginId" th:field="*{loginId}"/>
+                <div class="field-error" th:errors="*{loginId}"/>
+            </div>
+
+            <!-- 회원 이름 -->
+            <div class="field">
+                <label for="memberName">이름</label>
+                <input type="text" id="memberName" th:field="*{memberName}"/>
+                <div class="field-error" th:errors="*{memberName}"/>
+            </div>
+
+            <!-- 회원 e-mail -->
+            <div class="field">
+                <label for="memberName">e-mail</label>
+                <input class="placehold-text:before" type="email" id="userEmail" th:field="*{userEmail}"/>
+                <div class="field-error" th:errors="*{userEmail}"/>
+            </div>
+
+            <!-- 비밀번호 -->
+            <div class="field">
+                <label for="password1">비밀번호</label>
+                <input class="password" type="password" id="password1" th:field="*{password}"/>
+                <div class="field-error" th:errors="*{password}"/>
+            </div>
+
+            <!-- 비밀번호 확인 -->
+            <div class="field">
+                <label for="password2">비밀번호 확인</label>
+                <input class="password-confirm" type="password" id="password2" th:field="*{passwordConfirm}"/>
+                <div class="field-error" th:errors="*{passwordConfirm}"/>
+            </div>
+
+            <!-- 학원 이름 -->
+            <div class="field">
+                <label for="academyName">학원 이름</label>
+                <input type="text" placeholder="학원이름" id="academyName" th:field="*{academyName}">
+                <div class="field-error" th:errors="*{academyName}"/>
+            </div>
+
+            <input type="submit" value="가입"/>
+            <input type="button" th:onclick="|location.href='@{/}'|" value="취소"/>
+        </div>
+    </form>
+</body>
+</html>
