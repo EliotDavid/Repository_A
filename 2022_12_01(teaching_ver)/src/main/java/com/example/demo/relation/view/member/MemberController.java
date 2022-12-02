@@ -34,13 +34,27 @@ public class MemberController {
         if(bindingResult.hasErrors())
             return "members/newMemberForm";
 
+
         List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
+        // ** 해당하는 학원이름이 존재하는지 확인하는 의미라고 함
 
         Academy academy = null;
 
         if(!academies.isEmpty())
-            academy = academies.get(0);
+            for(int i = 0; i <= academies.size(); i++){
+                if(dto.getAcademyName().equals(academies.get(i))){
+                    academy = academies.get(0);
+                    String AcademyNameFromDb = academies.get(i).getAcademyName();
+                    System.out.println(AcademyNameFromDb);
+                    break;
+                }
+            }
+
+            //academy = academies.indexOf()
+            //academy = academies.get(0);
+
         else
+            System.out.println("There is no the academy you wrote in Db. I'll add it. ");
             academy = new Academy(dto.getAcademyName());
 
         List<Member> members = relationService.findById(dto.getLoginId());
