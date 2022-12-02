@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+
+    <style>
+        .container {
+            max-width: 500px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color : #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <form action="" th:action th:object="${form}" method="post">
+        <div class="member">
+            <!-- 로고 -->
+            <img class="logo" src="/images/sign_up.png">
+
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+                   th:text="${err}">전체 오류 메시지</p>
+            </div>
+
+            <!-- 로그인 ID -->
+            <div class="field">
+                <label for="loginId">로그인 ID</label>
+                <input type="text" id="loginId" th:field="*{loginId}"/>
+                <div class="field-error" th:errors="*{loginId}"/>
+            </div>
+
+
+            <!-- 비밀번호 -->
+            <div class="field">
+                <label for="password1">비밀번호</label>
+                <input class="password" type="password" id="password1" th:field="*{password}"/>
+                <div class="field-error" th:errors="*{password}"/>
+            </div>
+
+
+            <input type="submit" value="가입"/>
+            <input type="button" th:onclick="|location.href='@{/}'|" value="취소"/>
+        </div>
+    </form>
+</body>
+</html>
