@@ -69,6 +69,30 @@
                 <div class="field-error" th:errors="*{academyName}"/>
             </div>
 
+
+
+            <div class="field">
+                <label for="academyName">주소1</label>
+                <input type="text" placeholder="주소1" id="address1" th:field="*{address1}">
+                <div class="field-error" th:errors="*{address1}"/>
+            </div>
+
+
+            <div class="field">
+                <label for="academyName">주소2</label>
+                <input type="text" placeholder="주소2" id="address2" th:field="*{address2}">
+                <div class="field-error" th:errors="*{address2}"/>
+            </div>
+
+
+            <div class="field">
+                <label for="academyName">ZipCode</label>
+                <input type="text" placeholder="Zipcode" id="zipcode" th:field="*{zipcode}">
+                <div class="field-error" th:errors="*{zipcode}"/>
+            </div>
+
+
+
             <input type="submit" value="가입"/>
             <input type="button" th:onclick="|location.href='@{/}'|" value="취소"/>
         </div>
