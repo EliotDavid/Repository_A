@@ -36,4 +36,12 @@ public class MemberDto {
 
     @NotEmpty(message = "필수 항목입니다")
     private String zipcode;
+
+    @NotEmpty(message = "필수 항목입니다")
+    private String country;
+
+    @NotEmpty(message = "필수 항목입니다")
+    private String city;
+
+
 }
